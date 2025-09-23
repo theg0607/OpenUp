@@ -2,6 +2,7 @@ import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import colors from "colors";
+import nodemailer from "nodemailer";
 
 export const signin = async (req, res) => {
     try {
@@ -25,29 +26,37 @@ export const signin = async (req, res) => {
     }
 };
 
-
+// const transporter = nodemailer.createTransport({
+//   service:"gmail",
+//   auth: {
+//     user: process.env.EMAIL,
+//     pass: process.env.PASSWORD,
+//   },
+// });
 
 export const signup = async (req, res) => {
-  try {
-    const { name, password, email, phone } =
-      req.body;
-    const salt = bcrypt.genSaltSync(10);
-    const hashPassword = bcrypt.hashSync(password, salt);
-    const toBeCreatedUser = new User({
-      name,
-      password: hashPassword,
-      email,
-      phone
-    });
-    const user = await toBeCreatedUser.save();
-    const token = jwt.sign({ email, hashPassword }, process.env.SECRET, {
-      expiresIn: "1hr",
-    });
-    res.send({ userId:user._id, token, msg: "Created User" });
-  } catch (error) {
-    console.log(error);
-    res.send(error)
-  }
+  // try {
+  //   const { name, password, email, phone } =
+  //     req.body;
+  //   const salt = bcrypt.genSaltSync(10);
+  //   const hashPassword = bcrypt.hashSync(password, salt);
+  //   const toBeCreatedUser = new User({
+  //     name,
+  //     password: hashPassword,
+  //     email,
+  //     phone
+  //   });
+  //   const user = await toBeCreatedUser.save();
+  //   const token = jwt.sign({ email, hashPassword }, process.env.SECRET, {
+  //     expiresIn: "1hr",
+  //   });
+  //   res.send({ userId:user._id, token, msg: "Created User" });
+  // } catch (error) {
+  //   console.log(error);
+  //   res.send(error)
+  // }
+  console.log(req.body);
+  
 };
 
 

@@ -1,5 +1,3 @@
-import Navbar from "./spotify/navbar";
-import Hero from "./spotify/hero";
 import { Input } from "@/components/ui/input";
 
 export default function Home() {
