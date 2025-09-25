@@ -77,6 +77,8 @@ export const Signup = () => {
           id="picture"
           type="file"
           onChange={(e) => {
+            // console.log(e.target.files[0]);
+            
             setFormData((prev) => {
               return { ...prev, profilePicture: e.target.files[0] };
             });

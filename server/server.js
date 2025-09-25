@@ -15,7 +15,9 @@ const __dirname = path.dirname(__filename)
 
 connectDb();
 
-app.use(cors());
+app.use(cors({
+  origin:["http://localhost:3000"]
+}));
 app.use(express.static(path.join(__dirname,"public")))
 app.use(
   express.json({
